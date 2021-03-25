@@ -1,4 +1,66 @@
 <?php
+require ('./db/db.php');
+$postsArray = Array();
+$page = 1;
+if(!empty($_GET['page'])) {
+    $page = filter_input(INPUT_GET, 'page', FILTER_VALIDATE_INT);
+    if(false === $page) {
+        $page = 1;
+    }
+}
+$items_per_page = 4;
+$offset = ($page - 1) * $items_per_page;
+$sql = "SELECT * FROM prevpost LIMIT ".$items_per_page." OFFSET ".$offset;
+$posts = $conn->query($sql);
+$return = [];
+foreach ($posts as $row) {
+    $return[] = [ 
+        'Id' => $row['Id'],
+        'Title' => $row['Title'],
+        'Img' => $row['Img'],
+        'DateAt' => $row['DateAt'],
+        'Views' => $row['Views'],
+        'MinText' => $row['MinText'],
+        'seoname' => $row['seoname'],
+        'description' => $row['description']
+    ];
+}
+$postsResult = "";
+for($i = 0; $i < count($return); $i++) {
+  if($i == 0) {
+    $postsResult .= "<div class=\"blog__item blog__item--big\">
+    <img src=\"/src/article/{$return[$i]['Img']}\" alt=\"\">
+    <div class=\"blog__info\">
+      <div class=\"blog__title\">{$return[$i]['Title']}</div>
+      <div class=\"blog__date\">{$return[$i]['DateAt']}</div>
+      <div class=\"blog__preview\">{$return[$i]['MinText']}</div>
+    </div>
+    <a href=\"/blog/{$return[$i]['seoname']}\"></a>
+  </div>";
+  }
+  elseif($i == 1 || $i == 2)
+  {
+    $postsResult .= "<div class=\"blog__item\">
+             <img src=\"/src/article/{$return[$i]['Img']}\" alt=\"\">
+             <div class=\"blog__info\">
+               <div class=\"blog__title\">{$return[$i]['Title']}</div>
+               <div class=\"blog__date\">{$return[$i]['DateAt']}</div>
+               <div class=\"blog__preview\">{$return[$i]['MinText']}</div>
+             </div>
+             <a href=\"/blog/{$return[$i]['seoname']}\"></a>
+           </div>";
+  }elseif($i == 3){
+$postsResult .= "<div class=\"blog__item blog__item--big\">
+    <img src=\"/src/article/{$return[$i]['Img']}\" alt=\"\">
+    <div class=\"blog__info\">
+      <div class=\"blog__title\">{$return[$i]['Title']}</div>
+      <div class=\"blog__date\">{$return[$i]['DateAt']}</div>
+      <div class=\"blog__preview\">{$return[$i]['MinText']}</div>
+    </div>
+    <a href=\"/blog/{$return[$i]['seoname']}\"></a>
+  </div>";
+  }
+}
 echo "<!DOCTYPE html>
 <html lang=\"ru\">
   <head>
@@ -31,42 +93,7 @@ echo "<!DOCTYPE html>
       <div class=\"blog\">
         <div class=\"title\">Блог</div>
         <div class=\"blog__wrapper\">
-          <div class=\"blog__item blog__item--big\">
-            <img src=\"/img/\" alt="">
-            <div class=\"blog__info\">
-              <div class=\"blog__title\"></div>
-              <div class=\"blog__date\"></div>
-              <div class=\"blog__preview\"></div>
-            </div>
-            <a href=\"#\"></a>
-          </div>
-          <div class=\"blog__item\">
-            <img src=\"/img/\" alt="">
-            <div class=\"blog__info\">
-              <div class=\"blog__title\"></div>
-              <div class=\"blog__date\"></div>
-              <div class=\"blog__preview\"></div>
-            </div>
-            <a href=\"#\"></a>
-          </div>
-          <div class=\"blog__item\">
-            <img src=\"/img/\" alt="">
-            <div class=\"blog__info\">
-              <div class=\"blog__title\"></div>
-              <div class=\"blog__date\"></div>
-              <div class=\"blog__preview\"></div>
-            </div>
-            <a href=\"#\"></a>
-          </div>
-          <div class=\"blog__item blog__item--big\">
-            <img src=\"/img/\" alt="">
-            <div class=\"blog__info\">
-              <div class=\"blog__title\"></div>
-              <div class=\"blog__date\"></div>
-              <div class=\"blog__preview\"></div>
-            </div>
-            <a href=\"#\"></a>
-          </div>
+          {$postsResult}
         </div>
       </div>
     </div>

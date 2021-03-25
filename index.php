@@ -16,7 +16,7 @@ echo "<!DOCTYPE html>
     <header class=\"header\">
       <div class=\"custom-container\"><a class=\"logo\" href=\"/\"><img src=\"src/img/logo.svg\" alt=\"logo\"/></a>
         <div class=\"mobile-nav\">
-          <nav class=\"nav\"><a class=\"nav__link\" href=\"/catalog\">Микрозаймы</a><a class=\"nav__link\" href=\"/blog\">Блог</a></nav>
+          <nav class=\"nav\"><a class=\"nav__link\" href=\"/catalog\">Микрозаймы</a><a class=\"nav__link\" href=\"/blog.php\">Блог</a></nav>
         </div><a class=\"link-mail\" href=\"mailTo:ezcash.official@gmail.com\">ezcash.official@gmail.com</a>
         <div class=\"hamburger\" @click=\"showMenu = !showMenu\"><span></span><span></span><span></span></div>
       </div>

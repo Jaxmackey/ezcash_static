@@ -27,7 +27,7 @@ echo "<!DOCTYPE html>
         <span class=\"breadcrumbs__current\">Блог</span>
       </div>
     </div>
-    <div class=\"blog-img\"><img src=\"/img/" alt=\"itemInfo.Title\"></div>
+    <div class=\"blog-img\"><img src=\"/img/\" alt=\"itemInfo.Title\"></div>
     <div class=\"blog-content\">
       <h1 class=\"h1-black\">{{ itemInfo.Title }}</h1>
       <div class=\"blog-text\"></div>
