@@ -21,15 +21,52 @@ echo "<!DOCTYPE html>
         <div class=\"hamburger\" @click=\"showMenu = !showMenu\"><span></span><span></span><span></span></div>
       </div>
     </header>
-    <div class=\"offer\">
-      <div class=\"custom-container\">
-        <div class=\"offer__wrapper\">
-          <h1>Мы поможем получить деньги быстро</h1>
-          <div class=\"offer__descr\">Помогаем  выбрать заёмщика с наилучшими условиями. Вам ничего не нужно делать, просто оформите заявку у нас на сайте и ждите одобрения</div>
-        </div>
-        <div class=\"filter\">
-        <div style=\"margin-bottom:50px;\" id=\"period_slider\"></div>
-        <div id=\"ps\"></div>
+    <div class=\"custom-container\">
+    <div class=\"breadcrumbs\">
+      <a href=\"#\" class=\"breadcrumbs__link\">Главная</a>
+        <span class=\"breadcrumbs__current\">Блог</span>
+      </div>
+    </div>
+    <div class=\"custom-container\">
+      <div class=\"blog\">
+        <div class=\"title\">Блог</div>
+        <div class=\"blog__wrapper\">
+          <div class=\"blog__item blog__item--big\">
+            <img src=\"/img/\" alt="">
+            <div class=\"blog__info\">
+              <div class=\"blog__title\"></div>
+              <div class=\"blog__date\"></div>
+              <div class=\"blog__preview\"></div>
+            </div>
+            <a href=\"#\"></a>
+          </div>
+          <div class=\"blog__item\">
+            <img src=\"/img/\" alt="">
+            <div class=\"blog__info\">
+              <div class=\"blog__title\"></div>
+              <div class=\"blog__date\"></div>
+              <div class=\"blog__preview\"></div>
+            </div>
+            <a href=\"#\"></a>
+          </div>
+          <div class=\"blog__item\">
+            <img src=\"/img/\" alt="">
+            <div class=\"blog__info\">
+              <div class=\"blog__title\"></div>
+              <div class=\"blog__date\"></div>
+              <div class=\"blog__preview\"></div>
+            </div>
+            <a href=\"#\"></a>
+          </div>
+          <div class=\"blog__item blog__item--big\">
+            <img src=\"/img/\" alt="">
+            <div class=\"blog__info\">
+              <div class=\"blog__title\"></div>
+              <div class=\"blog__date\"></div>
+              <div class=\"blog__preview\"></div>
+            </div>
+            <a href=\"#\"></a>
+          </div>
         </div>
       </div>
     </div>
