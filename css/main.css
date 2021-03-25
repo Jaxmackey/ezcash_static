@@ -1315,6 +1315,30 @@ button.swiper-pagination-bullet {
   padding-bottom: 6px;
 }
 
+.blog-img {
+  border-radius: 50px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.blog-img img {
+  max-width: 100%;
+}
+
+.blog-content {
+  max-width: 850px;
+  margin: 0 auto 50px;
+}
+
+.blog-text {
+  font-size: 22px;
+  line-height: 30px;
+  display: flex;
+  flex-direction: column;
+}
+
 @media(max-width: 1199px) {
   .filter {
     margin-bottom: 25px;
@@ -1378,5 +1402,10 @@ button.swiper-pagination-bullet {
 
   .blog__item.blog__item--big .blog__info {
     max-height: 136px;
+  }
+
+  .blog-text {
+    font-size: 16px;
+    line-height: 22px;
   }
 }
