@@ -1409,3 +1409,23 @@ button.swiper-pagination-bullet {
     line-height: 22px;
   }
 }
+
+.pagination {
+  text-align: center;
+  padding: 20px 0;
+}
+.pagination li {
+  display: inline-block;
+  margin: 0 10px;
+}
+.pagination li a {
+  display: block;
+  padding: 5px 10px;
+  color: #b69453;
+  background: #303030;
+}
+.pagination li a:hover,
+.pagination li a.active {
+  background: #b69453;
+  color: #303030;
+}

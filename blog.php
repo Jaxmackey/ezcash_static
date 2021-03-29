@@ -28,39 +28,56 @@ foreach ($posts as $row) {
 $postsResult = "";
 for($i = 0; $i < count($return); $i++) {
   if($i == 0) {
-    $postsResult .= "<div class=\"blog__item blog__item--big\">
+    $postsResult .= "<div class=\"blog__item blog__item--big\" onclick=\"window.location.replace('/blog-inner.php?name={$return[$i]['seoname']}');\">
     <img src=\"/src/article/{$return[$i]['Img']}\" alt=\"\">
     <div class=\"blog__info\">
       <div class=\"blog__title\">{$return[$i]['Title']}</div>
       <div class=\"blog__date\">{$return[$i]['DateAt']}</div>
       <div class=\"blog__preview\">{$return[$i]['MinText']}</div>
     </div>
-    <a href=\"/blog/{$return[$i]['seoname']}\"></a>
+    <a href=\"/blog-inner.php?name={$return[$i]['seoname']}\"></a>
   </div>";
   }
   elseif($i == 1 || $i == 2)
   {
-    $postsResult .= "<div class=\"blog__item\">
+    $postsResult .= "<div class=\"blog__item\" onclick=\"window.location.replace('/blog-inner.php?name={$return[$i]['seoname']}');\">
              <img src=\"/src/article/{$return[$i]['Img']}\" alt=\"\">
              <div class=\"blog__info\">
                <div class=\"blog__title\">{$return[$i]['Title']}</div>
                <div class=\"blog__date\">{$return[$i]['DateAt']}</div>
                <div class=\"blog__preview\">{$return[$i]['MinText']}</div>
              </div>
-             <a href=\"/blog/{$return[$i]['seoname']}\"></a>
+             <a href=\"/blog-inner.php?name={$return[$i]['seoname']}\"></a>
            </div>";
-  }elseif($i == 3){
-$postsResult .= "<div class=\"blog__item blog__item--big\">
+  }
+  elseif($i == 3)
+  {
+    $postsResult .= "<div class=\"blog__item blog__item--big\" onclick=\"window.location.replace('/blog-inner.php?name={$return[$i]['seoname']}');\">
     <img src=\"/src/article/{$return[$i]['Img']}\" alt=\"\">
     <div class=\"blog__info\">
       <div class=\"blog__title\">{$return[$i]['Title']}</div>
       <div class=\"blog__date\">{$return[$i]['DateAt']}</div>
       <div class=\"blog__preview\">{$return[$i]['MinText']}</div>
     </div>
-    <a href=\"/blog/{$return[$i]['seoname']}\"></a>
+    <a href=\"/blog-inner.php?name={$return[$i]['seoname']}\"></a>
   </div>";
   }
 }
+
+$totalpage = $conn->query("SELECT COUNT(*) AS total FROM prevpost;")->fetch_object();
+$total = $totalpage->total;
+$perPage = 4;
+$countPage = ceil($total/4);
+$paginationResult = "<ul class='pagination'>";
+for($j = 1; $j <= $countPage; $j++)
+{
+  if($page == $j){
+    $paginationResult .= "<li><a class='active' href=\"/blog.php?page={$j}\">{$j}</a></li>";
+  }else{
+    $paginationResult .= "<li><a href=\"/blog.php?page={$j}\">{$j}</a></li>";
+  }
+}
+$paginationResult .= "</ul>";
 echo "<!DOCTYPE html>
 <html lang=\"ru\">
   <head>
@@ -71,8 +88,9 @@ echo "<!DOCTYPE html>
     <link rel=\"stylesheet\" href=\"\css\main.css\">
     <link rel=\"stylesheet\" href=\"\css\slider\\rangeslider.css\">
     <link rel=\"stylesheet\" href=\"\css\slider\\priceslider.css\">
-    <title>EZCASH Мы поможем получить деньги быстро</title>
-    <meta name=\"description\" content=\"Помогаем выбрать заёмщика с наилучшими условиями. Вам ничего не нужно делать, просто оформите заявку у нас на сайте и ждите одобрения\">
+    <link rel=\"shortcut icon\" href=\"favicon.ico\" type=\"image/x-icon\">
+    <title>EZCASH - Блог</title>
+    <meta name=\"description\" content=\"EZCASH Блог: статьи о создании собственного бизнеса, карьере и обучении\">
   <link href=\"\css\main.css\" rel=\"stylesheet\"></head>
   <body>
     <header class=\"header\">
@@ -96,6 +114,7 @@ echo "<!DOCTYPE html>
           {$postsResult}
         </div>
       </div>
+      {$paginationResult}
     </div>
     <footer class=\"footer\">
       <div class=\"custom-container\"><a href=\"/\"><img src=\"src/img/logo.svg\" alt=\"logo\"/></a>

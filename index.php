@@ -9,6 +9,7 @@ echo "<!DOCTYPE html>
     <link rel=\"stylesheet\" href=\"\css\main.css\">
     <link rel=\"stylesheet\" href=\"\css\slider\\rangeslider.css\">
     <link rel=\"stylesheet\" href=\"\css\slider\\priceslider.css\">
+    <link rel=\"shortcut icon\" href=\"favicon.ico\" type=\"image/x-icon\">
     <title>EZCASH Мы поможем получить деньги быстро</title>
     <meta name=\"description\" content=\"Помогаем выбрать заёмщика с наилучшими условиями. Вам ничего не нужно делать, просто оформите заявку у нас на сайте и ждите одобрения\">
   <link href=\"\css\main.css\" rel=\"stylesheet\"></head>
